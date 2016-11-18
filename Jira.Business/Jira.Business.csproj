@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ConfigProvider.cs" />
     <Compile Include="CustomerStatusProvider.cs" />
+    <Compile Include="Extensions\RestSharpExtensions.cs" />
     <Compile Include="ICustomerStatusProvider.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />

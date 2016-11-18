@@ -2,12 +2,28 @@
   "name": "JiraReactApp",
   "version": "0.1.0",
   "private": true,
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
+  },
   "proxy": "http://localhost:8080",
   "devDependencies": {
+    "concurrently": "^3.1.0",
     "react-scripts": "0.6.1"
   },
   "dependencies": {
+    "babel-cli": "6.14.0",
+    "babel-core": "6.14.0",
+    "babel-preset-es2015": "6.14.0",
+    "babel-preset-stage-0": "6.5.0",
+    "body-parser": "^1.15.2",
     "chart.js": "^1.1.1",
+    "express": "^4.14.0",
+    "express-cors": "0.0.3",
+    "fs": "0.0.1-security",
+    "jsonfile": "^2.4.0",
     "lodash": "^4.16.4",
     "moment": "^2.15.1",
     "react": "^15.3.2",
@@ -17,10 +33,13 @@
     "react-fetch": "0.0.9",
     "react-http-request": "^1.0.2",
     "react-router": "^3.0.0",
-    "semantic-ui-react": "^0.56.2"
+    "semantic-ui-react": "^0.61.1",
+    "whatwg-fetch": "^2.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+    "client": "react-scripts start",
+    "server": "babel-node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

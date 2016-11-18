@@ -13,6 +13,8 @@ namespace Jira.Api.Initialization
 
         public void Initialize(IPipelines pipelines)
         {
+            StaticConfiguration.DisableErrorTraces = false;
+
             pipelines.BeforeRequest.AddItemToStartOfPipeline(ctx =>
             {
                 lock (_lockObject)

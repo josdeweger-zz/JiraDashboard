@@ -27,7 +27,6 @@ class CustomerStatusComponent extends Component {
                         if (loading) {
                             return <CustomerLoaderCardComponent />;
                         } else if(error) {
-                            console.dir(error);
                             return <CustomerErrorCardComponent error={error} />;
                         } else {
                             return <CustomerStatusCardComponent customer={customer} customerStatus={result.body} />;

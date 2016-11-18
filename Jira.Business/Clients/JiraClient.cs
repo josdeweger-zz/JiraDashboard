@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Jira.Business.Extensions;
 using Jira.Business.Stores;
-using Jira.Models;
 using Jira.Models.Config;
 using Jira.Models.Jira;
 using RestSharp;
+using Cookie = Jira.Models.Cookie;
 
 namespace Jira.Business.Clients
 {
@@ -85,10 +86,20 @@ namespace Jira.Business.Clients
             var response = _client.Execute<T>(restRequest);
 
             if (response.ErrorException != null)
-                throw new ApplicationException("Error retrieving response.  Check inner details for more info.",
-                    response.ErrorException);
+                throw response.ErrorException;
+
+            if (!response.IsSuccessful())
+                HandleResponseError(response);
 
             return response.Data;
+        }
+
+        private static void HandleResponseError<T>(IRestResponse<T> response) where T : new()
+        {
+            if (response.ErrorException != null)
+                throw response.ErrorException;
+
+            throw new Exception(response.Content);
         }
 
         public async Task<T> ExecuteAsync<T>() where T : new()
@@ -99,9 +110,8 @@ namespace Jira.Business.Clients
 
             var response = await _client.ExecuteTaskAsync<T>(restRequest);
 
-            if (response.ErrorException != null)
-                throw new ApplicationException("Error retrieving response.  Check inner details for more info.",
-                    response.ErrorException);
+            if (!response.IsSuccessful())
+                HandleResponseError(response);
 
             return response.Data;
         }
