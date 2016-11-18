@@ -1,0 +1,39 @@
+﻿@using Jira.Models
+@model Jira.Models.DTO.CustomerStatusDto
+
+<div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Project Id</th>
+                <th>Customer Name</th>
+                <th>Project Key</th>
+                <th>Hours Per Project</th>
+                <th>Hours Reserved</th>
+                <th>%</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var totalHoursPerProject in Model.HoursPerCustomer)
+            {
+                <tr class="@(totalHoursPerProject.LoggedHoursValue == LoggedHoursValue.Positive ? "positive" : totalHoursPerProject.LoggedHoursValue == LoggedHoursValue.Negative ? "negative" : "")">
+                    <td>@string.Join(", ", totalHoursPerProject.ProjectIds)</td>
+                    <td>@totalHoursPerProject.CustomerName</td>
+                    <td>@string.Join(", ", totalHoursPerProject.ProjectKeys)</td>
+                    <td>@totalHoursPerProject.TotalHours</td>
+                    <td>@totalHoursPerProject.HoursReserved</td>
+                    <td>@totalHoursPerProject.Percentage %</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="6">
+                    <div class="ui right floated">
+                        <h2>Total hours logged: @Model.HoursPerCustomer.Sum(m => m.TotalHours)</h2>
+                    </div>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+{
+  "name": "JiraReactApp",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "react-scripts": "0.6.1"
+  },
+  "dependencies": {
+    "chart.js": "^1.1.1",
+    "lodash": "^4.16.4",
+    "moment": "^2.15.1",
+    "react": "^15.3.2",
+    "react-chartjs": "^0.8.0",
+    "react-datepicker": "^0.32.0",
+    "react-dom": "^15.3.2",
+    "react-fetch": "0.0.9",
+    "react-http-request": "^1.0.2",
+    "react-router": "^3.0.0",
+    "semantic-ui-react": "^0.56.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
