@@ -1,0 +1,10 @@
+version: "2"
+services:
+  web:
+    build: ./Jira.NodeServer
+    volumes:
+      - Jira.NodeServer:/app
+    ports:
+      - "3001:3001"
+volumes:
+  Jira.NodeServer:

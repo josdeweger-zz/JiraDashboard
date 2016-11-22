@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import { Config } from '../Config';
+import Request from 'react-http-request';
 import {Header, Form, Button, Modal, TextArea} from 'semantic-ui-react';
-import Config from '../../public/Config.json';
 import 'whatwg-fetch';
 
 class SettingsComponent extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { isModalOpen: false, modalMessage: '' };
+        this.state = { 
+            isModalOpen: false, 
+            modalMessage: '' 
+        };
 
         this.modalOpen = this.modalOpen.bind(this);
         this.modalClose = this.modalClose.bind(this);
         this.saveJsonSettings = this.saveJsonSettings.bind(this);
     }
-
 
     modalOpen = (modalMessage) => this.setState({ 
         isModalOpen: true, 
@@ -40,7 +43,7 @@ class SettingsComponent extends Component {
         })
         .catch(function(ex) {
             console.log('Exception: ', ex)
-            self.modalOpen('Woops, something went wrong. Check the exception: ' + JSON.stringify(ex));
+            self.modalOpen('Woops, something went wrong saving the settings. Check the exception: ' + JSON.stringify(ex));
         });
     }
 
@@ -54,7 +57,23 @@ class SettingsComponent extends Component {
                 </Header>
                 <Form onSubmit={this.saveJsonSettings}>
                     <Form.Field>
-                        <TextArea name="settings" defaultValue={JSON.stringify(Config, null, 2) } />
+                        <Request
+                            url={Config.jiraNodeServerSettingsUrl}
+                            method='get'
+                            accept='application/json'
+                            verbose={true}>
+                            {
+                                ({error, result, loading}) => {
+                                    if (loading) {
+                                        return <div>Loading...</div>;
+                                    } else if(error) {
+                                        console.error(error);
+                                    } else {
+                                        return <TextArea name="settings" defaultValue={JSON.stringify(result.body, null, 2) } />;
+                                    }
+                                }
+                            }
+                        </Request>
                     </Form.Field>
                     <Button primary type='submit' floated='right'>Save Settings</Button>
                 </Form>
