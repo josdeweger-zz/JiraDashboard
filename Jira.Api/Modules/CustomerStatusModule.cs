@@ -23,11 +23,7 @@ namespace Jira.Api.Modules
                     return Negotiate.WithModel(validationResult).WithStatusCode(HttpStatusCode.BadRequest);
                 }
 
-                var customerStatusResponse = await customerStatusProvider.GetCustomerStatus(
-                    customerStatusRequest.ProjectKeys,
-                    customerStatusRequest.Date,
-                    customerStatusRequest.Sprint,
-                    customerStatusRequest.HoursReserved);
+                var customerStatusResponse = await customerStatusProvider.GetCustomerStatus(customerStatusRequest);
 
                 return customerStatusResponse;
             };

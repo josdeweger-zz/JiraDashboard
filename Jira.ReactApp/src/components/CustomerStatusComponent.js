@@ -7,8 +7,9 @@ import map from 'lodash/map';
 
 class CustomerStatusComponent extends Component {
     render() {
-        let {customer, date, selectedSprint, hoursReserved, jiraApiClientUrl} = this.props;
+        let {customer, teamId, date, selectedSprint, hoursReserved, jiraApiClientUrl} = this.props;
         let request = { 
+            "teamId": teamId,
             "projectKeys": map(customer.projectKeys, 'key'), 
             "date": date.format("YYYY-MM-DD"), 
             "sprint": { start: selectedSprint.start, end: selectedSprint.end }, 

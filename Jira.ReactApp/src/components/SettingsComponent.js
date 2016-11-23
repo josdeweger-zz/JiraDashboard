@@ -38,7 +38,6 @@ class SettingsComponent extends Component {
             body: serializedForm.settings
         })
         .then(function(result) {
-            console.log('result', result.body);
             self.modalOpen('The settings were successfully saved!');
         })
         .catch(function(ex) {

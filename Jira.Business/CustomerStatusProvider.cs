@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Jira.Business.Clients;
 using Jira.Models.Config;
 using Jira.Models.Jira;
+using Jira.Models.Request;
 using Jira.Models.Response;
+using Sprint = Jira.Models.Config.Sprint;
 
 namespace Jira.Business
 {
@@ -23,14 +25,13 @@ namespace Jira.Business
             _credentials = new Credentials(_config.Username, _config.Password);
         }
 
-        public async Task<CustomerStatusResponse> GetCustomerStatus(List<string> projectKeys, DateTime date,
-            Models.Request.Sprint sprintRequest, decimal hoursReserved)
+        public async Task<CustomerStatusResponse> GetCustomerStatus(CustomerStatusRequest customerStatusRequest)
         {
-            var sprint = new Sprint(sprintRequest.Start, sprintRequest.End);
+            var sprint = new Sprint(customerStatusRequest.Sprint.Start, customerStatusRequest.Sprint.End);
             var worklogs = new List<Worklog>();
 
             //per project
-            foreach (var projectKey in projectKeys)
+            foreach (var projectKey in customerStatusRequest.ProjectKeys)
             {
                 //get all worklogs for this project between sprint start and end
                 worklogs.AddRange(
@@ -39,13 +40,14 @@ namespace Jira.Business
                         .ForResource(_config.WorklogResource)
                         .UsingCredentials(_credentials)
                         .WithQueryParam("projectKey", projectKey)
+                        .WithQueryParam("teamId", customerStatusRequest.TeamId.ToString())
                         .WithQueryParam("dateFrom", sprint.Start.ToString("yyyy-MM-dd"))
-                        .WithQueryParam("dateTo", date.ToString("yyyy-MM-dd"))
+                        .WithQueryParam("dateTo", customerStatusRequest.Date.ToString("yyyy-MM-dd"))
                         .ExecuteAsync<List<Worklog>>());
             }
 
             //calculate hour status
-            return CustomerStatusFromWorklogs(sprint, date, worklogs, hoursReserved);
+            return CustomerStatusFromWorklogs(sprint, customerStatusRequest.Date, worklogs, customerStatusRequest.HoursReserved);
         }
 
         private CustomerStatusResponse CustomerStatusFromWorklogs(Sprint sprint, DateTime date, List<Worklog> worklogs, decimal hoursReserved)

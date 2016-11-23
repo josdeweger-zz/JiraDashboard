@@ -9,6 +9,7 @@ namespace Jira.Api.Validators
         {
             CascadeMode = CascadeMode.StopOnFirstFailure;
 
+            RuleFor(request => request.TeamId).NotNull().NotEmpty().WithMessage("You must specify the team id.");
             RuleFor(request => request.ProjectKeys).NotNull().NotEmpty().WithMessage("You must specify at least one projectkey.");
             RuleFor(request => request.Date).NotNull().NotEmpty().WithMessage("You must specify a date.");
             RuleFor(request => request.Sprint).NotNull().NotEmpty().WithMessage("You must specify a sprint.");

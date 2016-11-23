@@ -5,6 +5,7 @@ namespace Jira.Models.Request
 {
     public class CustomerStatusRequest
     {
+        public int TeamId { get; set; }
         public List<string> ProjectKeys { get; set; }
         public DateTime Date { get; set; }
         public Sprint Sprint { get; set; }

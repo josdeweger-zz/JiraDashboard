@@ -24,8 +24,7 @@ namespace Jira.Api.Specs
             _customerStatusProviderMock = new Mock<ICustomerStatusProvider>();
             _customerStatusProviderMock.Setup(
                 c =>
-                    c.GetCustomerStatus(It.IsAny<List<string>>(), It.IsAny<DateTime>(), It.IsAny<Sprint>(),
-                        It.IsAny<decimal>()))
+                    c.GetCustomerStatus(It.IsAny<CustomerStatusRequest>()))
                 .Returns(Task.FromResult(new CustomerStatusResponse()
                 {
                     HoursExpected = 15,
@@ -49,6 +48,7 @@ namespace Jira.Api.Specs
             {
                 var customerStatusRequest = new CustomerStatusRequest()
                 {
+                    TeamId = 24,
                     Date = new DateTime(2016, 1, 15),
                     Sprint =
                         new Sprint {Start = new DateTime(2016, 1, 12), End = new DateTime(2016, 1, 26)},
@@ -71,6 +71,7 @@ namespace Jira.Api.Specs
             {
                 var customerStatusRequest = new CustomerStatusRequest()
                 {
+                    TeamId = 24,
                     Date = new DateTime(2016, 1, 19),
                     Sprint =
                         new Sprint { Start = new DateTime(2016, 1, 12), End = new DateTime(2016, 1, 26) },
@@ -90,6 +91,26 @@ namespace Jira.Api.Specs
             response.Percentage.Should().Be(50);
             response.TotalHours.Should().Be(15);
         }
+        [Fact]
+        public void GettingCustomerStatusWithEmptyTeamIdShouldReturnBadRequest()
+        {
+            var result = _browser.Post("/customer/status", with =>
+            {
+                var customerStatusRequest = new CustomerStatusRequest()
+                {
+                    Sprint =
+                        new Sprint { Start = new DateTime(2016, 1, 12), End = new DateTime(2016, 1, 26) },
+                    ProjectKeys = new List<string>() { "KEY" },
+                    HoursReserved = 20
+                };
+
+                with.JsonBody(customerStatusRequest);
+                with.Header("Accept", "application/json");
+                with.HttpRequest();
+            });
+
+            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
 
         [Fact]
         public void GettingCustomerStatusWithEmptyDateShouldReturnBadRequest()
@@ -98,6 +119,7 @@ namespace Jira.Api.Specs
             {
                 var customerStatusRequest = new CustomerStatusRequest()
                 {
+                    TeamId = 24,
                     Sprint =
                         new Sprint { Start = new DateTime(2016, 1, 12), End = new DateTime(2016, 1, 26) },
                     ProjectKeys = new List<string>() { "KEY" },
@@ -119,6 +141,7 @@ namespace Jira.Api.Specs
             {
                 var customerStatusRequest = new CustomerStatusRequest()
                 {
+                    TeamId = 24,
                     Date = new DateTime(2016, 1, 15),
                     Sprint =
                         new Sprint { Start = new DateTime(2016, 1, 12), End = new DateTime(2016, 1, 26) },

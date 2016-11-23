@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using FluentAssertions;
+using System.Net;
 using Jira.Business.Clients;
 using Jira.Business.Stores;
 using Jira.Models.Config;
@@ -31,6 +29,8 @@ namespace Jira.Business.Specs
             _restSharpClient.Setup(r => r.Execute<CookieAuthentication>(It.IsAny<IRestRequest>()))
                 .Returns(new RestResponse<CookieAuthentication>()
                 {
+                    StatusCode = HttpStatusCode.OK,
+                    ResponseStatus = ResponseStatus.Completed,
                     Data = new CookieAuthentication()
                     {
                         Session = new Session() { Name = _authCookie.Key, Value = _authCookie.Value }

@@ -54,6 +54,7 @@ class CustomerStatusCardsComponent extends Component {
                             }).hoursReserved;
 
                             return <CustomerStatusComponent 
+                                        teamId={settings.teamId}
                                         key={index} 
                                         customer={customer} 
                                         date={date} 
