@@ -1,6 +1,6 @@
-import express from 'express';
-import jsonfile from 'jsonfile';
-import bodyParser from 'body-parser';
+var express = require('express');
+var jsonfile = require('jsonfile');
+var bodyParser = require('body-parser');
 
 const jsonSettingsFilePath = "config.json";
 
@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.send('Hello World 2!');
+  res.send('Hello World bla bla!');
 });
 
 app.get('/settings', (req, res) => {
@@ -60,5 +60,5 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(app.get('port'), () => {
-    console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+    console.log(`Node server started.\nFind the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });

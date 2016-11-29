@@ -1,10 +1,20 @@
+    # 1. Update config values in config.development.json
+    # 2. Set APP_ENV environment variable to proper value in Dockerfile-redis (default is "development")
+    #    export APP_ENV=development
+    # 3. Run docker-compose build
+    # 4. Run docker-compose up
+    # 5. Live long and prosper
+    
 version: "2"
+ 
 services:
-  web:
-    build: ./Jira.NodeServer
-    volumes:
-      - Jira.NodeServer:/app
-    ports:
+    jira-node-server:
+      container_name: jira-node-server
+      build: 
+        context: .
+        dockerfile: .docker/jira-node-servern.dockerfile
+      ports:
       - "3001:3001"
-volumes:
-  Jira.NodeServer:
+      volumes:
+        - .:/var/www/jira-node-server
+      working_dir: /var/www/jira-node-server

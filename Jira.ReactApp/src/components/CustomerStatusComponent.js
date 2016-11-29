@@ -11,7 +11,7 @@ class CustomerStatusComponent extends Component {
         let request = { 
             "teamId": teamId,
             "projectKeys": map(customer.projectKeys, 'key'), 
-            "date": date.format("YYYY-MM-DD"), 
+            "date": date.format(), 
             "sprint": { start: selectedSprint.start, end: selectedSprint.end }, 
             "hoursReserved": hoursReserved 
         };

@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0-*",
+
+  "testRunner": "xunit",
+
+  "dependencies": {
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
+    "Jira.Api.Business": "1.0.0-*",
+    "Jira.Api.Models": "1.0.0-*",
+    "Moq": "4.6.38-alpha",
+    "Microsoft.NETCore.App": {
+      "version": "1.0.1",
+      "type": "platform"
+    },
+    "RestSharp.NetCore": "105.2.4-rc4-24214-01",
+    "xunit": "2.2.0-beta2-build3300",
+    "FluentAssertions": "4.17.0"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {}
+  }
+}
