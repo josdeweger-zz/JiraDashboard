@@ -863,9 +863,10 @@
           }
         }
       },
-      "Nancy/2.0.0-barneyrubble": {
+      "Nancy/2.0.0-Pre1801": {
         "type": "package",
         "dependencies": {
+          "AsyncUsageAnalyzers": "1.0.0-alpha003",
           "Microsoft.CSharp": "4.0.1",
           "Microsoft.Extensions.DependencyModel": "1.0.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
@@ -3024,7 +3025,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
         "dependencies": {
-          "NETStandard.Library": "1.6.0",
           "RestSharp.NetCore": "105.2.4-rc4-24214-01"
         },
         "compile": {
@@ -3841,12 +3841,12 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll"
       ]
     },
-    "Nancy/2.0.0-barneyrubble": {
-      "sha512": "ffOBZdJd+uiI1J+tOGdjL6+YUyque8OrX4CeXT8DHJQORlPNOFww1KskXtaW20OGefaSXf1LGh07XDGQyH4iQQ==",
+    "Nancy/2.0.0-Pre1801": {
+      "sha512": "5w0NHSZ4DDKNqbtG+CMVMCq2NxnHk16ZVKHiryhwOKUWVxWQZA+K+cqU4DmupTjuT+myJc1z9mUKbjbbZzuvvA==",
       "type": "package",
-      "path": "Nancy/2.0.0-barneyrubble",
+      "path": "Nancy/2.0.0-Pre1801",
       "files": [
-        "Nancy.2.0.0-barneyrubble.nupkg.sha512",
+        "Nancy.2.0.0-Pre1801.nupkg.sha512",
         "Nancy.nuspec",
         "lib/net452/Nancy.dll",
         "lib/net452/Nancy.xml",
@@ -8735,7 +8735,7 @@
       "Microsoft.AspNetCore.Owin >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.1",
-      "Nancy >= 2.0.0-barneyrubble",
+      "Nancy >= 2.0.0-Pre1801",
       "Nancy.Bootstrappers.Autofac >= 2.0.0-Pre473",
       "Nancy.Validation.FluentValidation >= 2.0.0-Pre1801",
       "RestSharp.NetCore >= 105.2.4-rc4-24214-01"

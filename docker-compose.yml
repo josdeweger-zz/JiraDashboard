@@ -12,9 +12,29 @@ services:
       container_name: jira-node-server
       build: 
         context: .
-        dockerfile: .docker/jira-node-servern.dockerfile
+        dockerfile: .docker/jira-node-server.dockerfile
       ports:
       - "3001:3001"
-      volumes:
-        - .:/var/www/jira-node-server
       working_dir: /var/www/jira-node-server
+      volumes: 
+        - .:/var/www/jira-node-server
+
+    jira-dotnetcore-api:
+      container_name: jira-dotnetcore-api
+      build: 
+        context: .
+        dockerfile: .docker/jira-dotnetcore-api.dockerfile
+      ports:
+      - "3002:3002"
+      working_dir: /var/www/jira-dotnetcore-api
+      
+    jira-react-app:
+      container_name: jira-react-app
+      build: 
+        context: .
+        dockerfile: .docker/jira-react-app.dockerfile
+      ports:
+      - "3000:3000"
+      working_dir: /var/www/jira-react-app
+      volumes: 
+        - .:/var/www/jira-react-app

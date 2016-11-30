@@ -11,7 +11,7 @@
     },
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.AspNetCore.Owin": "1.0.0",
-    "Nancy": "2.0.0-barneyrubble",
+    "Nancy": "2.0.0-Pre1801",
     "Nancy.Bootstrappers.Autofac": "2.0.0-Pre473",
     "RestSharp.NetCore": "105.2.4-rc4-24214-01",
     "Jira.Api.Business": "1.0.0-*",
@@ -23,5 +23,10 @@
   },
   "frameworks": {
     "netcoreapp1.0": {}
+  },
+  "publishOptions": {
+    "include": [
+      "config.json"
+    ]
   }
 }

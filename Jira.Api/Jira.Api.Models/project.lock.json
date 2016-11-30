@@ -5174,7 +5174,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "NETStandard.Library >= 1.6.0",
       "RestSharp.NetCore >= 105.2.4-rc4-24214-01"
     ],
     ".NETCoreApp,Version=v1.0": []
