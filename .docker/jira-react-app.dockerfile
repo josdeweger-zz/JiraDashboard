@@ -8,7 +8,7 @@ RUN mkdir -p /var/log/pm2
 
 EXPOSE 3001
 
-ENTRYPOINT ["pm2", "start", "pm2.json", "--env", "development", "--no-daemon"]
+ENTRYPOINT npm install & pm2 start pm2.json --env development --no-daemon
 
 # To build:
 # docker build -f jira-react-app.dockerfile --tag jira-react-app .

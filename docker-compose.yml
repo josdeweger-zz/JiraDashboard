@@ -1,10 +1,3 @@
-    # 1. Update config values in config.development.json
-    # 2. Set APP_ENV environment variable to proper value in Dockerfile-redis (default is "development")
-    #    export APP_ENV=development
-    # 3. Run docker-compose build
-    # 4. Run docker-compose up
-    # 5. Live long and prosper
-    
 version: "2"
  
 services:
@@ -14,10 +7,13 @@ services:
         context: .
         dockerfile: .docker/jira-node-server.dockerfile
       ports:
-      - "3001:3001"
+        - "3001:3001"
       working_dir: /var/www/jira-node-server
       volumes: 
-        - .:/var/www/jira-node-server
+        - ./Jira.NodeServer:/var/www/jira-node-server
+        # prevent the mounting of the node_modules folder which causes an error on windows (filepath longer than 260 chars)
+        # it will get added by the dockerfile because of npm install
+        - jira-node-server_node_modules:/var/www/jira-node-server/node_modules
 
     jira-dotnetcore-api:
       container_name: jira-dotnetcore-api
@@ -25,7 +21,7 @@ services:
         context: .
         dockerfile: .docker/jira-dotnetcore-api.dockerfile
       ports:
-      - "3002:3002"
+        - "3002:3002"
       working_dir: /var/www/jira-dotnetcore-api
       
     jira-react-app:
@@ -34,7 +30,14 @@ services:
         context: .
         dockerfile: .docker/jira-react-app.dockerfile
       ports:
-      - "3000:3000"
+        - "3000:3000"
       working_dir: /var/www/jira-react-app
       volumes: 
-        - .:/var/www/jira-react-app
+        - ./Jira.ReactApp:/var/www/jira-react-app
+        # prevent the mounting of the node_modules folder which causes an error on windows (filepath longer than 260 chars)
+        # it will get added by the dockerfile because of npm install
+        - jira-react-app_node_modules:/var/www/jira-react-app/node_modules
+
+volumes:
+  jira-node-server_node_modules:
+  jira-react-app_node_modules:
