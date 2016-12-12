@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETCoreApp,Version=v1.0": {
+    ".NETCoreApp,Version=v1.1": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -5176,7 +5176,7 @@
     "": [
       "RestSharp.NetCore >= 105.2.4-rc4-24214-01"
     ],
-    ".NETCoreApp,Version=v1.0": []
+    ".NETCoreApp,Version=v1.1": []
   },
   "tools": {},
   "projectFileToolGroups": {}

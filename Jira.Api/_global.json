@@ -1,7 +1,7 @@
 {
-  "projects": [ "Jira.Api", "Jira.Api.Business", "Jira.Api.Models" ],
+  "projects": [ "Jira.Api", "Jira.Api.Specs", "Jira.Api.Business", "Jira.Api.Business.Specs", "Jira.Api.Models" ],
   "sdk": {
-    "version": "1.0.0-beta5",
+    "version": "1.1.0",
     "runtime": "clr",
     "architecture": "x86"
   }

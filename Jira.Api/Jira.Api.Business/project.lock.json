@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETCoreApp,Version=v1.0": {
+    ".NETCoreApp,Version=v1.1": {
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -1442,15 +1442,15 @@
       },
       "Jira.Api.Models/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v1.0",
+        "framework": ".NETCoreApp,Version=v1.1",
         "dependencies": {
           "RestSharp.NetCore": "105.2.4-rc4-24214-01"
         },
         "compile": {
-          "netcoreapp1.0/Jira.Api.Models.dll": {}
+          "netcoreapp1.1/Jira.Api.Models.dll": {}
         },
         "runtime": {
-          "netcoreapp1.0/Jira.Api.Models.dll": {}
+          "netcoreapp1.1/Jira.Api.Models.dll": {}
         }
       }
     }
@@ -5195,7 +5195,7 @@
       "Jira.Api.Models >= 1.0.0-*",
       "RestSharp.NetCore >= 105.2.4-rc4-24214-01"
     ],
-    ".NETCoreApp,Version=v1.0": []
+    ".NETCoreApp,Version=v1.1": []
   },
   "tools": {},
   "projectFileToolGroups": {}

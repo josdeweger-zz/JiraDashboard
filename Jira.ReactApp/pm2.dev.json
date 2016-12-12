@@ -2,13 +2,23 @@
     "apps" : [{
     
         "name"            : "jira-react-app",
-        "script"          : "server.js",
+        "script"          : "node_modules/react-scripts/scripts/start.js",
         "watch"           : true,
         "watch_options"   : {
             "usePolling": true //necessary for nfs file systems where chokidar cannot properly monitor file changes
         },
-        "ignore_watch"    : ["node_modules"],
+        "ignore_watch"    : [".docker", ".vs", "node_modules"],
         "log_date_format" : "YYYY-MM-DD HH:mm Z",
+        
+        "env": {
+            "NODE_ENV": "development"
+        },
+        "env_production" : {
+            "NODE_ENV": "production"
+        },
+        "env_staging" : {
+            "NODE_ENV" : "staging"
+        },
         
         "help"            : "http://pm2.keymetrics.io/docs/usage/application-declaration"
         

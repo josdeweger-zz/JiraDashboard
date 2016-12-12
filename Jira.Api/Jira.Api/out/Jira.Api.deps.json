@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v1.0": {
-      "jira.api/1.0.0": {
+      "Jira.Api/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.AspNetCore.Owin": "1.0.0",
@@ -18,7 +18,7 @@
           "Nancy.Validation.FluentValidation": "2.0.0-Pre1801"
         },
         "runtime": {
-          "jira.api.dll": {}
+          "Jira.Api.dll": {}
         }
       },
       "AsyncUsageAnalyzers/1.0.0-alpha003": {},
@@ -592,7 +592,7 @@
     }
   },
   "libraries": {
-    "jira.api/1.0.0": {
+    "Jira.Api/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
