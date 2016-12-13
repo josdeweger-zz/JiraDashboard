@@ -6,7 +6,7 @@ COPY ./Jira.Api .
 
 RUN dotnet restore
 
-ENTRYPOINT cd /var/www/jira-dotnetcore-api/Jira.Api && dotnet run
+ENTRYPOINT cd /var/www/jira-dotnetcore-api/Jira.Api && dotnet build && dotnet run
 
 EXPOSE 3002
 
