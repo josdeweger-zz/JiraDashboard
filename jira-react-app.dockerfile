@@ -9,7 +9,8 @@ RUN mkdir -p /var/log/pm2
 
 COPY ./Jira.ReactApp/server.js .
 COPY ./Jira.ReactApp/pm2.json .
-COPY ./Jira.ReactApp/build ./build
+
+RUN npm run build
 
 ENTRYPOINT pm2 start pm2.json --env development --no-daemon
 
