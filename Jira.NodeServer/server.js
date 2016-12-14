@@ -60,5 +60,5 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(app.get('port'), () => {
-    console.log(`Node server started.\nFind the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
+    console.log(`Node server started.\nFind the server at: http://*:${app.get('port')}/`); // eslint-disable-line no-console
 });

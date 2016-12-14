@@ -32,3 +32,4 @@ Config.json
 bin/
 obj/
 packages/
+*.env

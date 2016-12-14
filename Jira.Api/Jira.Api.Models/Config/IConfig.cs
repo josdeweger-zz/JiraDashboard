@@ -2,11 +2,11 @@
 {
     public interface IConfig
     {
-        string RestApi { get; set; }
-        string Username { get; set; }
-        string Password { get; set; }
-        string AuthenticationResource { get; set; }
-        string WorklogResource { get; set; }
-        int FaultMarginPercentage { get; set; }
+        string RestApi { get; }
+        string Username { get; }
+        string Password { get; }
+        string AuthenticationResource { get; }
+        string WorklogResource { get; }
+        int FaultMarginPercentage { get; }
     }
 }

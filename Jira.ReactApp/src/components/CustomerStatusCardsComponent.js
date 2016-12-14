@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { Config } from '../Config';
 import HeaderComponent from './HeaderComponent';
 import CustomerStatusComponent from './CustomerStatusComponent';
 import {Card, Segment} from 'semantic-ui-react';
@@ -21,7 +20,6 @@ class CustomerStatusCardsComponent extends Component {
     }
 
     render() {
-        let {teamName, jiraApiClientUrl} = Config;
         let {settings} = this.props;
         let date = this.state.date;
         let firstSprintStart = moment(settings.sprints[0].start, "YYYY-MM-DD");
@@ -41,27 +39,31 @@ class CustomerStatusCardsComponent extends Component {
         return (             
             <div>
                 <HeaderComponent 
-                    teamName={teamName} 
                     date={date}
                     dateRange={dateRange}
                     selectedSprint={selectedSprint}
                     handleDateChanged={this.handleDateChanged} />
                 <Segment>
                     <Card.Group>
-                        {settings.customers.map(function(customer, index) {
-                            let hoursReserved = find(selectedSprint.reservations, function(reservation) {
-                                return reservation.customerId === customer.customerId;
-                            }).hoursReserved;
+                        {
+                            settings.customers.map(function(customer, index) {
+                                let reservation = find(selectedSprint.reservations, function(reservation) {
+                                    return reservation.customerId === customer.customerId;
+                                });
 
-                            return <CustomerStatusComponent 
-                                        teamId={settings.teamId}
-                                        key={index} 
-                                        customer={customer} 
-                                        date={date} 
-                                        selectedSprint={selectedSprint}
-                                        hoursReserved={hoursReserved}
-                                        jiraApiClientUrl={jiraApiClientUrl} />
-                        })}
+                                if(reservation) {
+                                    return <CustomerStatusComponent 
+                                            teamId={settings.teamId}
+                                            key={index} 
+                                            customer={customer} 
+                                            date={date} 
+                                            selectedSprint={selectedSprint}
+                                            hoursReserved={reservation.hoursReserved} />
+                                } else {
+                                    return '';
+                                }
+                            })
+                        }
                     </Card.Group>
                 </Segment>
             </div>

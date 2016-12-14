@@ -5,10 +5,12 @@ services:
       container_name: jira-node-server
       build: 
         context: .
-        dockerfile: ./jira-node-server.dev.dockerfile
+        dockerfile: ./Jira.NodeServer/jira-node-server.dev.dockerfile
       ports:
         - "3001:3001"
       working_dir: /var/www/jira-node-server
+      env_file:
+        - ./jira-node-server.env
       volumes: 
         - ./Jira.NodeServer:/var/www/jira-node-server
         # prevent the mounting of the node_modules folder which causes an error on windows (filepath longer than 260 chars)
@@ -20,20 +22,24 @@ services:
       container_name: jira-dotnetcore-api
       build: 
         context: .
-        dockerfile: ./jira-dotnetcore-api.dev.dockerfile
+        dockerfile: ./Jira.Api/jira-dotnetcore-api.dev.dockerfile
       ports:
         - "3002:3002"
       working_dir: /var/www/jira-dotnetcore-api
+      env_file:
+        - ./jira-dotnetcore-api.env
       restart: always
       
     dev-jira-react-app:
       container_name: jira-react-app
       build: 
         context: .
-        dockerfile: ./jira-react-app.dev.dockerfile
+        dockerfile: ./Jira.ReactApp/jira-react-app.dev.dockerfile
       ports:
         - "3000:3000"
       working_dir: /var/www/jira-react-app
+      env_file:
+        - ./jira-react-app.env
       volumes: 
         - ./Jira.ReactApp:/var/www/jira-react-app
         # prevent the mounting of the node_modules folder which causes an error on windows (filepath longer than 260 chars)

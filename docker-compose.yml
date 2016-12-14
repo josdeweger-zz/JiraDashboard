@@ -1,6 +1,15 @@
 version: "2"
  
-services:
+services:      
+    jira-react-app:
+      container_name: jira-react-app
+      build: 
+        context: .
+        dockerfile: ./jira-react-app.dockerfile
+      ports:
+        - "3000:3000"
+      restart: always
+
     jira-node-server:
       container_name: jira-node-server
       build: 
@@ -8,7 +17,6 @@ services:
         dockerfile: ./jira-node-server.dockerfile
       ports:
         - "3001:3001"
-      working_dir: /var/www/jira-node-server
       restart: always
 
     jira-dotnetcore-api:
@@ -18,15 +26,4 @@ services:
         dockerfile: ./jira-dotnetcore-api.dockerfile
       ports:
         - "3002:3002"
-      working_dir: /var/www/jira-dotnetcore-api
-      restart: always
-      
-    jira-react-app:
-      container_name: jira-react-app
-      build: 
-        context: .
-        dockerfile: ./jira-react-app.dockerfile
-      ports:
-        - "3000:3000"
-      working_dir: /var/www/jira-react-app
       restart: always

@@ -14,11 +14,8 @@ namespace Jira.Api.Bootstrap
         {
             //Configuration
             container.Update(
-                        builder => builder.Register(c => new ConfigProvider<Config>(@"config.json")).As<IConfigProvider<Config>>()
+                        builder => builder.Register(c => new Config()).As<IConfig>()
                         .SingleInstance());
-            container.Update(
-                builder =>
-                    builder.Register(c => c.Resolve<IConfigProvider<Config>>().Get()).As<IConfig>().SingleInstance());
 
             //Stores
             container.Update(

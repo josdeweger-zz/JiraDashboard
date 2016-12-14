@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Config } from '../Config';
 import Request from 'react-http-request';
 import {Header, Form, Button, Modal, TextArea} from 'semantic-ui-react';
 import 'whatwg-fetch';
@@ -30,7 +29,7 @@ class SettingsComponent extends Component {
         e.preventDefault();
         let self = this;
 
-        fetch('http://localhost:3001/settings', {
+        fetch(process.env.REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,6 +47,7 @@ class SettingsComponent extends Component {
 
     render() {
         let {isModalOpen, modalMessage} = this.state;
+        let jiraNodeServerSettingsUrl = process.env.REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL;
 
         return (
             <div className='settings'>
@@ -57,7 +57,7 @@ class SettingsComponent extends Component {
                 <Form onSubmit={this.saveJsonSettings}>
                     <Form.Field>
                         <Request
-                            url={Config.jiraNodeServerSettingsUrl}
+                            url={jiraNodeServerSettingsUrl}
                             method='get'
                             accept='application/json'
                             verbose={true}>
