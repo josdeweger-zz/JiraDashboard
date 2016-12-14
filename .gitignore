@@ -27,8 +27,6 @@ chrome-user-data
 .idea
 *.iml
 .vscode
-config.json
-Config.json
 bin/
 obj/
 packages/
