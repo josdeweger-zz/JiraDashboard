@@ -7,7 +7,7 @@ import map from 'lodash/map';
 
 class CustomerStatusComponent extends Component {
     render() {
-        let jiraApiCustomerStatusUrl = process.env.REACT_APP_JIRA_API_CUSTOMER_STATUS_URL;
+        console.log("REACT_APP_JIRA_API_CUSTOMER_STATUS_URL", process.env.REACT_APP_JIRA_API_CUSTOMER_STATUS_URL);
         let {customer, teamId, date, selectedSprint, hoursReserved} = this.props;
         let request = { 
             "teamId": teamId,
@@ -19,7 +19,7 @@ class CustomerStatusComponent extends Component {
         
         return(
             <Request
-                url={jiraApiCustomerStatusUrl}
+                url={process.env.REACT_APP_JIRA_API_CUSTOMER_STATUS_URL}
                 method='post'
                 accept='application/json'
                 send={request}
