@@ -8,10 +8,6 @@ RUN mkdir -p /var/log/pm2
 
 COPY ./Jira.ReactApp .
 
-ENV REACT_APP_TEAM_NAME=ElMango
-ENV REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL=http://localhost:3001/settings
-ENV REACT_APP_JIRA_API_CUSTOMER_STATUS_URL=http://localhost:3002/customer/status
-
 RUN npm install 
 RUN npm run build
 
