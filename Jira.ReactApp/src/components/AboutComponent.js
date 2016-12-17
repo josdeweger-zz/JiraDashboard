@@ -9,7 +9,7 @@ class AboutComponent extends Component {
                     About the Jira Dashboard
                 </Header>
                 <p>
-                    The Jira Dashboard helps teams to get insight into hours spent on projects. 
+                    The Jira Dashboard helps teams to get insight into hours spent on projects.
                 </p>
             </div>
         );
