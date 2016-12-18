@@ -17,8 +17,6 @@ COPY . .
 
 RUN cd /var/www/jira-react-app && ls
 
-WORKDIR /var/www/jira-react-app
-
 RUN npm install
 RUN chmod a+x /var/www/jira-react-app/node_modules/.bin/react-scripts
 RUN npm run build
