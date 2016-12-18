@@ -4,7 +4,7 @@ services:
     jira-react-app:
       container_name: jira-react-app
       build: 
-        context: .
+        context: ./Jira.ReactAppi
         dockerfile: ./jira-react-app.dockerfile
       ports:
         - "3000:3000"
@@ -13,7 +13,7 @@ services:
     jira-node-server:
       container_name: jira-node-server
       build: 
-        context: .
+        context: ./Jira.NodeServer
         dockerfile: ./jira-node-server.dockerfile
       ports:
         - "3001:3001"
@@ -22,7 +22,7 @@ services:
     jira-dotnetcore-api:
       container_name: jira-dotnetcore-api
       build: 
-        context: .
+        context: ./Jira.Api
         dockerfile: ./jira-dotnetcore-api.dockerfile
       ports:
         - "3002:3002"

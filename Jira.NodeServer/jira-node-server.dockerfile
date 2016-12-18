@@ -6,8 +6,10 @@ RUN npm install -g pm2@latest
 
 RUN mkdir -p /var/log/pm2
 
-COPY ./Jira.NodeServer .
+COPY . .
 
-ENTRYPOINT pm2 start pm2.json --env development --watch --no-daemon
+RUN npm install
+
+ENTRYPOINT pm2 start pm2.json --env development --no-daemon
 
 EXPOSE 3001

@@ -2,7 +2,7 @@ FROM microsoft/dotnet
 
 WORKDIR /var/www/jira-dotnetcore-api
 
-COPY ./Jira.Api .
+COPY . .
 
 RUN dotnet restore
 

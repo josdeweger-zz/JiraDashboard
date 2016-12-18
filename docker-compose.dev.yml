@@ -4,49 +4,39 @@ services:
     dev-jira-react-app:
       container_name: dev-jira-react-app
       build: 
-        context: .
+        context: ./Jira.ReactApp
         dockerfile: ./jira-react-app.dev.dockerfile
       ports:
         - "8000:3000"
       working_dir: /var/www/jira-react-app
       env_file:
-        - ./jira-react-app.env
+        - ./Jira.ReactApp/jira-react-app.env
       volumes: 
         - ./Jira.ReactApp:/var/www/jira-react-app
-        # prevent the mounting of the node_modules folder which causes an error on windows (filepath longer than 260 chars)
-        # it will get added by the dockerfile because of npm install
-        # - dev-jira-react-app_node_modules:/var/www/jira-react-app/node_modules
       restart: always
 
     dev-jira-node-server:
       container_name: dev-jira-node-server
       build: 
-        context: .
+        context: ./Jira.NodeServer
         dockerfile: ./jira-node-server.dev.dockerfile
       ports:
         - "8001:3001"
       working_dir: /var/www/jira-node-server
       env_file:
-        - ./jira-node-server.env
+        - ./Jira.NodeServer/jira-node-server.env
       volumes: 
         - ./Jira.NodeServer:/var/www/jira-node-server
-        # prevent the mounting of the node_modules folder which causes an error on windows (filepath longer than 260 chars)
-        # it will get added by the dockerfile because of npm install
-        # - dev-jira-node-server_node_modules:/var/www/jira-node-server/node_modules
       restart: always
 
     dev-jira-dotnetcore-api:
       container_name: dev-jira-dotnetcore-api
       build: 
-        context: .
+        context: ./Jira.Api
         dockerfile: ./jira-dotnetcore-api.dev.dockerfile
       ports:
         - "8002:3002"
       working_dir: /var/www/jira-dotnetcore-api
       env_file:
-        - ./jira-dotnetcore-api.env
+        - ./Jira.Api/jira-dotnetcore-api.env
       restart: always
-
-# volumes:
-#   dev-jira-node-server_node_modules:
-#   dev-jira-react-app_node_modules:
