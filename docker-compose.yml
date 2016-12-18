@@ -4,7 +4,7 @@ services:
     jira-react-app:
       container_name: jira-react-app
       build: 
-        context: ./Jira.ReactAppi
+        context: ./Jira.ReactApp
         dockerfile: ./jira-react-app.dockerfile
       ports:
         - "3000:3000"

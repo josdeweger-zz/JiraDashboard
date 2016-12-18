@@ -17,7 +17,8 @@ WORKDIR /var/www/jira-react-app
 
 COPY . .
 
-RUN npm install 
+RUN npm install
+RUN chmod a+x /var/www/jira-react-app/node_modules/.bin/react-scripts
 RUN npm run build
 
 ENTRYPOINT pm2 start pm2.json --env development --no-daemon
