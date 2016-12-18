@@ -13,7 +13,9 @@ WORKDIR /var/www/jira-react-app
 RUN npm install -g pm2@latest
 RUN mkdir -p /var/log/pm2
 
-COPY . /var/www/jira-react-app
+COPY . .
+
+RUN cd /var/www/jira-react-app && ls
 
 WORKDIR /var/www/jira-react-app
 
