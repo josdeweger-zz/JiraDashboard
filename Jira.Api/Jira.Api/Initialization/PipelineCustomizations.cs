@@ -29,7 +29,9 @@ namespace Jira.Api.Initialization
             {
                 WriteError(ex);
 
-                return null;
+                throw ex;
+
+                return HttpStatusCode.InternalServerError;
             });
 
             pipelines.AfterRequest.AddItemToEndOfPipeline(AddAccessControlHeaders);
