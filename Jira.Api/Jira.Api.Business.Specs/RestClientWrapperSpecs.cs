@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Jira.Api.Business.Clients;
 using Jira.Api.Business.Stores;
 using Jira.Api.Models.Config;
@@ -11,14 +13,14 @@ using Xunit;
 
 namespace Jira.Api.Business.Specs
 {
-    public class JiraClientSpecs
+    public class RestClientWrapperSpecs
     {
         private readonly Mock<IConfig> _config;
         private readonly Mock<IRestClient> _restSharpClient;
         private KeyValuePair<string, string> _authCookie;
         private readonly Mock<ICookieStore> _cookieStore;
 
-        public JiraClientSpecs()
+        public RestClientWrapperSpecs()
         {
             _config = new Mock<IConfig>();
             _config.Setup(c => c.AuthenticationResource).Returns(string.Empty);
@@ -36,7 +38,6 @@ namespace Jira.Api.Business.Specs
                         Session = new Session() { Name = _authCookie.Key, Value = _authCookie.Value }
                     }
                 });
-            _restSharpClient.Setup(r => r.Execute<object>(It.IsAny<IRestRequest>())).Returns(new RestResponse<object>());
 
             _cookieStore = new Mock<ICookieStore>();
         }
@@ -44,7 +45,9 @@ namespace Jira.Api.Business.Specs
         [Fact]
         public void WhenUsingTheClientWithoutUsingCredentialsTheCookieShouldNotBeStored()
         {
-            new JiraClient(_config.Object, _restSharpClient.Object, _cookieStore.Object)
+            _restSharpClient.Setup(r => r.Execute<object>(It.IsAny<IRestRequest>())).Returns(new RestResponse<object>());
+
+            new RestClientWrapper(_config.Object, _restSharpClient.Object, _cookieStore.Object)
                 .WithBaseUrl("http://localhost")
                 .ForResource("some/resource")
                 .ExecuteAsync<object>();
@@ -57,7 +60,9 @@ namespace Jira.Api.Business.Specs
         [Fact]
         public void WhenUsingCredentialsTheAuthenticationCookieShouldBeStoredInTheCookieStore()
         {
-            new JiraClient(_config.Object, _restSharpClient.Object, _cookieStore.Object)
+            _restSharpClient.Setup(r => r.Execute<object>(It.IsAny<IRestRequest>())).Returns(new RestResponse<object>());
+
+            new RestClientWrapper(_config.Object, _restSharpClient.Object, _cookieStore.Object)
                 .WithBaseUrl("http://localhost")
                 .ForResource("some/resource")
                 .UsingCredentials(new Credentials("username", "password"))
@@ -65,6 +70,30 @@ namespace Jira.Api.Business.Specs
 
             _cookieStore.Verify(
                 x => x.Store(It.IsAny<string>(), _authCookie.Key, _authCookie.Value, It.IsAny<DateTime>()), Times.Once);
+        }
+
+        [Fact]
+        public void WhenTheClientTimesOutItShouldThrow()
+        {
+            var timeoutMessage = "The request timed out";
+
+            _restSharpClient.Setup(c => c.ExecuteAsync<object>(
+                Moq.It.IsAny<IRestRequest>(),
+                Moq.It.IsAny<Action<IRestResponse<object>, RestRequestAsyncHandle>>()))
+            .Callback<IRestRequest, Action<IRestResponse<object>, RestRequestAsyncHandle>>((request, callback) =>
+            {
+                var responseMock = new Mock<IRestResponse<object>>();
+                responseMock.Setup(r => r.StatusCode).Returns(HttpStatusCode.RequestTimeout);
+                responseMock.Setup(r => r.Content).Returns(timeoutMessage);
+                callback(responseMock.Object, null);
+            });
+
+            Action result = () => new RestClientWrapper(_config.Object, _restSharpClient.Object, _cookieStore.Object)
+                .WithBaseUrl("http://localhost")
+                .ForResource("some/resource")
+                .ExecuteAsync<object>();
+
+            result.ShouldThrow<Exception>().WithMessage(timeoutMessage);
         }
     }
 }

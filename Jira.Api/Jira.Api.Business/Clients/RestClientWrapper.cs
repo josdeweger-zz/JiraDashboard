@@ -10,7 +10,7 @@ using Cookie = Jira.Api.Models.Cookie;
 
 namespace Jira.Api.Business.Clients
 {
-    public class JiraClient : IJiraClient
+    public class RestClientWrapper : IRestClientWrapper
     {
         private readonly IConfig _config;
         private readonly ICookieStore _authenticationCookieStore;
@@ -25,14 +25,14 @@ namespace Jira.Api.Business.Clients
         private IDictionary<string, string> _queryParams = new Dictionary<string, string>();
         private object _jsonBody;
 
-        public JiraClient(IConfig config, IRestClient client, ICookieStore authenticationCookieStore)
+        public RestClientWrapper(IConfig config, IRestClient client, ICookieStore authenticationCookieStore)
         {
             _config = config;
             _client = client;
             _authenticationCookieStore = authenticationCookieStore;
         }
 
-        public IJiraClient WithBaseUrl(string baseUrl)
+        public IRestClientWrapper WithBaseUrl(string baseUrl)
         {
             _baseUrl = baseUrl;
             _client.BaseUrl = new Uri(baseUrl);
@@ -40,7 +40,7 @@ namespace Jira.Api.Business.Clients
             return this;
         }
 
-        public IJiraClient ForResource(string resource, Method method = Method.GET)
+        public IRestClientWrapper ForResource(string resource, Method method = Method.GET)
         {
             _resource = resource;
             _method = method;
@@ -48,14 +48,14 @@ namespace Jira.Api.Business.Clients
             return this;
         }
 
-        public IJiraClient WithQueryParams(IDictionary<string, string> queryParams)
+        public IRestClientWrapper WithQueryParams(IDictionary<string, string> queryParams)
         {
             _queryParams = queryParams;
 
             return this;
         }
 
-        public IJiraClient WithQueryParam(string key, string value)
+        public IRestClientWrapper WithQueryParam(string key, string value)
         {
             if(!_queryParams.ContainsKey(key))
                 _queryParams.Add(key, value);
@@ -63,14 +63,14 @@ namespace Jira.Api.Business.Clients
             return this;
         }
 
-        public IJiraClient WithBody(object body)
+        public IRestClientWrapper WithBody(object body)
         {
             _jsonBody = body;
 
             return this;
         }
 
-        public IJiraClient UsingCredentials(Credentials credentials)
+        public IRestClientWrapper UsingCredentials(Credentials credentials)
         {
             _credentials = credentials;
             _authenticate = true;
@@ -151,7 +151,7 @@ namespace Jira.Api.Business.Clients
             if (authenticationCookie == null)
             {
                 var cookie =
-                    new JiraClient(_config, _client, _authenticationCookieStore)
+                    new RestClientWrapper(_config, _client, _authenticationCookieStore)
                         .WithBaseUrl(_baseUrl)
                         .ForResource(_config.AuthenticationResource, Method.POST)
                         .WithBody(new {username = _credentials.UserName, password = _credentials.Password})

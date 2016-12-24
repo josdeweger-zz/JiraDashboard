@@ -29,7 +29,7 @@ namespace Jira.Api.Bootstrap
 
             //Rest Clients
             container.Update(builder => builder.RegisterType<RestClient>().As<IRestClient>());
-            container.Update(builder => builder.RegisterType<JiraClient>().As<IJiraClient>());
+            container.Update(builder => builder.RegisterType<RestClientWrapper>().As<IRestClientWrapper>());
 
             container.Update(builder => builder.RegisterType<CustomerStatusProvider>().As<ICustomerStatusProvider>());
         }

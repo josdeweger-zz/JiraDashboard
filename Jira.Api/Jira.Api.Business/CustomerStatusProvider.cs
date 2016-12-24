@@ -14,10 +14,10 @@ namespace Jira.Api.Business
     public class CustomerStatusProvider : ICustomerStatusProvider
     {
         private readonly IConfig _config;
-        private readonly IJiraClient _jiraClient;
+        private readonly IRestClientWrapper _jiraClient;
         private readonly Credentials _credentials;
 
-        public CustomerStatusProvider(IConfig config, IJiraClient jiraClient)
+        public CustomerStatusProvider(IConfig config, IRestClientWrapper jiraClient)
         {
             _config = config;
             _jiraClient = jiraClient;
