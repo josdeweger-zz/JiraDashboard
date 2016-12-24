@@ -16,8 +16,6 @@ namespace Jira.Api.Modules
         {
             Post("status", (ctx) =>
             {
-                throw new Exception("Some exception");
-
                 var customerStatusRequest = this.Bind<CustomerStatusRequest>();
 
                 var validationResult = this.Validate(customerStatusRequest);
