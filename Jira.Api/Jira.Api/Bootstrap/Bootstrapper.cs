@@ -33,6 +33,13 @@ namespace Jira.Api.Bootstrap
             container.Update(builder => builder.RegisterType<CustomerStatusProvider>().As<ICustomerStatusProvider>());
         }
 
+        protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
+        {
+            base.ConfigureConventions(nancyConventions);
+            
+            nancyConventions.StaticContentsConventions.Clear();
+        }
+
         public override void Configure(INancyEnvironment environment)
         {
             var config = ApplicationContainer.Resolve<IConfig>();
