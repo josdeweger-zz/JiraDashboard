@@ -50,9 +50,21 @@ namespace Jira.Api.Initialization
 
         private static void WriteError(Exception ex)
         {
-            Console.WriteLine("An error occured.");
+            Console.WriteLine("An exception occured.");
+            WriteException(ex);
+
+            while (ex.InnerException != null)
+            {
+                ex = ex.InnerException;
+                WriteException(ex);
+            }
+        }
+
+        private static void WriteException(Exception ex)
+        {
             Console.WriteLine($"Message: {ex.Message}");
-            Console.WriteLine($"Inner Exception: {ex.InnerException?.Message}");
+            Console.WriteLine($"Source: {ex.Source}");
+            Console.WriteLine($"Stacktrace: {ex.StackTrace}");
         }
     }
 }
