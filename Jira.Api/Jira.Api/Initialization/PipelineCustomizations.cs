@@ -52,7 +52,7 @@ namespace Jira.Api.Initialization
         {
             Console.WriteLine("An error occured.");
             Console.WriteLine($"Message: {ex.Message}");
-            Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+            Console.WriteLine($"Inner Exception: {ex.InnerException?.Message}");
         }
     }
 }

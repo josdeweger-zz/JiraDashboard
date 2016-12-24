@@ -35,9 +35,11 @@ namespace Jira.Api.Bootstrap
 
         public override void Configure(INancyEnvironment environment)
         {
+            var config = ApplicationContainer.Resolve<IConfig>();
+
             environment.Diagnostics(
-                enabled: true,
-                password: "password",
+                enabled: config.DiagnosticsEnabled,
+                password: config.DiagnosticsPassword,
                 path: "/_Nancy",
                 cookieName: "jira.api",
                 slidingTimeout: 30);

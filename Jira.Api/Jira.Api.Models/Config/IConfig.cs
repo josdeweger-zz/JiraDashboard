@@ -2,6 +2,8 @@
 {
     public interface IConfig
     {
+        bool DiagnosticsEnabled { get; }
+        string DiagnosticsPassword { get; }
         string RestApi { get; }
         string Username { get; }
         string Password { get; }
