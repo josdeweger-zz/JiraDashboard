@@ -29,7 +29,7 @@ namespace Jira.Api.Initialization
             {
                 WriteError(ex);
 
-                throw ex;
+                return null;
             });
 
             pipelines.AfterRequest.AddItemToEndOfPipeline(AddAccessControlHeaders);
