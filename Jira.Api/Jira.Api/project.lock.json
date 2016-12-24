@@ -873,10 +873,9 @@
           }
         }
       },
-      "Nancy/2.0.0-Pre1801": {
+      "Nancy/2.0.0-Pre1820": {
         "type": "package",
         "dependencies": {
-          "AsyncUsageAnalyzers": "1.0.0-alpha003",
           "Microsoft.CSharp": "4.0.1",
           "Microsoft.Extensions.DependencyModel": "1.0.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
@@ -911,11 +910,11 @@
           "lib/netstandard1.6/Nancy.dll": {}
         }
       },
-      "Nancy.Bootstrappers.Autofac/2.0.0-Pre473": {
+      "Nancy.Bootstrappers.Autofac/2.0.0-Pre483": {
         "type": "package",
         "dependencies": {
           "Autofac": "4.0.0-rc3-316",
-          "Nancy": "2.0.0-barneyrubble"
+          "Nancy": "2.0.0-clinteastwood"
         },
         "compile": {
           "lib/netstandard1.6/Nancy.Bootstrappers.Autofac.dll": {}
@@ -924,12 +923,12 @@
           "lib/netstandard1.6/Nancy.Bootstrappers.Autofac.dll": {}
         }
       },
-      "Nancy.Validation.FluentValidation/2.0.0-Pre1801": {
+      "Nancy.Validation.FluentValidation/2.0.0-Pre1820": {
         "type": "package",
         "dependencies": {
           "AsyncUsageAnalyzers": "1.0.0-alpha003",
           "FluentValidation": "6.3.4-alpha",
-          "Nancy": "2.0.0-Pre1801"
+          "Nancy": "2.0.0-Pre1820"
         },
         "compile": {
           "lib/netstandard1.6/Nancy.Validation.FluentValidation.dll": {}
@@ -3997,12 +3996,12 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll"
       ]
     },
-    "Nancy/2.0.0-Pre1801": {
-      "sha512": "5w0NHSZ4DDKNqbtG+CMVMCq2NxnHk16ZVKHiryhwOKUWVxWQZA+K+cqU4DmupTjuT+myJc1z9mUKbjbbZzuvvA==",
+    "Nancy/2.0.0-Pre1820": {
+      "sha512": "gyZAzjDZHZk5hiild+yq3ea8J6Kqo2+EBX+VXwc+x9EM5lpMSjt2wiPAJ5I1xac53bxpMILgEp1NauuhKXF3Lw==",
       "type": "package",
-      "path": "Nancy/2.0.0-Pre1801",
+      "path": "Nancy/2.0.0-Pre1820",
       "files": [
-        "Nancy.2.0.0-Pre1801.nupkg.sha512",
+        "Nancy.2.0.0-Pre1820.nupkg.sha512",
         "Nancy.nuspec",
         "lib/net452/Nancy.dll",
         "lib/net452/Nancy.xml",
@@ -4010,23 +4009,23 @@
         "lib/netstandard1.6/Nancy.xml"
       ]
     },
-    "Nancy.Bootstrappers.Autofac/2.0.0-Pre473": {
-      "sha512": "6wwYUfRmb1im+dTrdo7Wuv64bXJhaDPIjDOAhRHzXs+Tt80QTqQdKfvIqgLQdO4IHFnmRCeP8+9hjlnfRlfPGw==",
+    "Nancy.Bootstrappers.Autofac/2.0.0-Pre483": {
+      "sha512": "jtcOUfFOI1dPOYgje8xsTEAa4ys4jkwzVGj3wfOkGLMWN60k1y8GLjWwn5cv1qgGGTxBKfC67IcA4KOlXLpjCw==",
       "type": "package",
-      "path": "Nancy.Bootstrappers.Autofac/2.0.0-Pre473",
+      "path": "Nancy.Bootstrappers.Autofac/2.0.0-Pre483",
       "files": [
-        "Nancy.Bootstrappers.Autofac.2.0.0-Pre473.nupkg.sha512",
+        "Nancy.Bootstrappers.Autofac.2.0.0-Pre483.nupkg.sha512",
         "Nancy.Bootstrappers.Autofac.nuspec",
         "lib/net452/Nancy.Bootstrappers.Autofac.dll",
         "lib/netstandard1.6/Nancy.Bootstrappers.Autofac.dll"
       ]
     },
-    "Nancy.Validation.FluentValidation/2.0.0-Pre1801": {
-      "sha512": "RARC/+5qhAv0VNFWeulRUG6vvrOvlnlouiE0yVpet/QTGjw4Y7YzBjxPgZtU3k8Th6CRLUB0C6BwydEgIIQdnw==",
+    "Nancy.Validation.FluentValidation/2.0.0-Pre1820": {
+      "sha512": "0yAtjhN4PcCDt2/JRz2uwv/98Xwfi7evfYMC2ONA9uttmkEJMH457U7oGXlW9SoUFoCQMwikkJJZoEOp8Qwf8Q==",
       "type": "package",
-      "path": "Nancy.Validation.FluentValidation/2.0.0-Pre1801",
+      "path": "Nancy.Validation.FluentValidation/2.0.0-Pre1820",
       "files": [
-        "Nancy.Validation.FluentValidation.2.0.0-Pre1801.nupkg.sha512",
+        "Nancy.Validation.FluentValidation.2.0.0-Pre1820.nupkg.sha512",
         "Nancy.Validation.FluentValidation.nuspec",
         "lib/net452/Nancy.Validation.FluentValidation.dll",
         "lib/net452/Nancy.Validation.FluentValidation.xml",
@@ -9079,9 +9078,9 @@
       "Microsoft.AspNetCore.Owin >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.0",
       "Microsoft.NETCore.App >= 1.1.0",
-      "Nancy >= 2.0.0-Pre1801",
-      "Nancy.Bootstrappers.Autofac >= 2.0.0-Pre473",
-      "Nancy.Validation.FluentValidation >= 2.0.0-Pre1801",
+      "Nancy >= 2.0.0-Pre1820",
+      "Nancy.Bootstrappers.Autofac >= 2.0.0-Pre483",
+      "Nancy.Validation.FluentValidation >= 2.0.0-Pre1820",
       "RestSharp.NetCore >= 105.2.4-rc4-24214-01"
     ],
     ".NETCoreApp,Version=v1.1": []

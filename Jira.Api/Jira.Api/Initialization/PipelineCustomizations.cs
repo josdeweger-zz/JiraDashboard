@@ -30,8 +30,6 @@ namespace Jira.Api.Initialization
                 WriteError(ex);
 
                 throw ex;
-
-                return HttpStatusCode.InternalServerError;
             });
 
             pipelines.AfterRequest.AddItemToEndOfPipeline(AddAccessControlHeaders);
@@ -54,7 +52,7 @@ namespace Jira.Api.Initialization
         {
             Console.WriteLine("An error occured.");
             Console.WriteLine($"Message: {ex.Message}");
-            Console.WriteLine($"Inner Exception: {ex.InnerException}");
+            Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
         }
     }
 }

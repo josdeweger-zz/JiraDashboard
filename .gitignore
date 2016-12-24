@@ -31,3 +31,5 @@ bin/
 obj/
 packages/
 *.env
+.vs/
+Jira.Api/Jira.Api/Properties/launchSettings.json

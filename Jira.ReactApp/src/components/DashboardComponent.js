@@ -4,8 +4,6 @@ import CustomerStatusCardsComponent from './CustomerStatusCardsComponent';
 
 class DashboardComponent extends Component {
     render() {
-        console.log("REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL", process.env.REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL);
-
         return (
             <Request
                 url={process.env.REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL}

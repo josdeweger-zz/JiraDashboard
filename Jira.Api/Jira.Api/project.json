@@ -11,12 +11,12 @@
     },
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.AspNetCore.Owin": "1.0.0",
-    "Nancy": "2.0.0-Pre1801",
-    "Nancy.Bootstrappers.Autofac": "2.0.0-Pre473",
+    "Nancy": "2.0.0-Pre1820",
+    "Nancy.Bootstrappers.Autofac": "2.0.0-Pre483",
     "RestSharp.NetCore": "105.2.4-rc4-24214-01",
     "Jira.Api.Business": "1.0.0-*",
     "Jira.Api.Models": "1.0.0-*",
-    "Nancy.Validation.FluentValidation": "2.0.0-Pre1801"
+    "Nancy.Validation.FluentValidation": "2.0.0-Pre1820"
   },
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel"
