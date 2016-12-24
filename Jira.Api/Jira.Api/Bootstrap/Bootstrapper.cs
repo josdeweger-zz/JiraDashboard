@@ -7,6 +7,7 @@ using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Autofac;
 using Nancy.Configuration;
+using Nancy.Conventions;
 using Nancy.Diagnostics;
 using RestSharp;
 
@@ -31,13 +32,6 @@ namespace Jira.Api.Bootstrap
             container.Update(builder => builder.RegisterType<JiraClient>().As<IJiraClient>());
 
             container.Update(builder => builder.RegisterType<CustomerStatusProvider>().As<ICustomerStatusProvider>());
-        }
-
-        protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
-        {
-            base.ConfigureConventions(nancyConventions);
-            
-            nancyConventions.StaticContentsConventions.Clear();
         }
 
         public override void Configure(INancyEnvironment environment)
