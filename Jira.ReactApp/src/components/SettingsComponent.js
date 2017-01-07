@@ -29,7 +29,7 @@ class SettingsComponent extends Component {
         e.preventDefault();
         let self = this;
 
-        fetch(process.env.REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL, {
+        fetch(process.env.REACT_APP_JIRA_NODE_SERVER_URL + '/settings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ class SettingsComponent extends Component {
 
     render() {
         let {isModalOpen, modalMessage} = this.state;
-        let jiraNodeServerSettingsUrl = process.env.REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL;
+        let jiraNodeServerSettingsUrl = process.env.REACT_APP_JIRA_NODE_SERVER_URL + '/settings';
 
         return (
             <div className='settings'>

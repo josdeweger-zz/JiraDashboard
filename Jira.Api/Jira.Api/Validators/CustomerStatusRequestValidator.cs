@@ -1,5 +1,4 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
 using Jira.Api.Models.Request;
 
 namespace Jira.Api.Validators
@@ -10,11 +9,24 @@ namespace Jira.Api.Validators
         {
             CascadeMode = CascadeMode.StopOnFirstFailure;
 
-            RuleFor(request => request.TeamId).NotNull().NotEmpty().WithMessage("You must specify the team id.");
-            RuleFor(request => request.ProjectKeys).NotNull().NotEmpty().WithMessage("You must specify at least one projectkey.");
-            RuleFor(request => request.Date).NotNull().NotEmpty().WithMessage("You must specify a date.");
-            RuleFor(request => request.Sprint).NotNull().NotEmpty().WithMessage("You must specify a sprint.");
-            RuleFor(request => request.HoursReserved).NotNull().WithMessage("You must specify the hours reserved.");
+            RuleFor(r => r.TeamId).NotNull().NotEmpty();
+
+            RuleFor(r => r.ProjectKeys).NotNull().NotEmpty();
+
+            RuleFor(r => r.Date).NotNull().NotEmpty();
+
+            RuleFor(r => r.Date)
+                .GreaterThanOrEqualTo(r => r.Sprint.Start)
+                .LessThanOrEqualTo(r => r.Sprint.End)
+                .WithMessage("The selected date should be on or between sprint start and end date");
+            
+            RuleFor(r => r.Sprint.Start)
+                .NotNull()
+                .NotEmpty()
+                .LessThan(r => r.Sprint.End)
+                .WithMessage("The sprint start date has to be smaller than the sprint end date");
+
+            RuleFor(r => r.HoursReserved).NotNull();
         }
     }
 }

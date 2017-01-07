@@ -1,29 +1,42 @@
 version: "2"
  
-services:      
-    jira-react-app:
-      container_name: jira-react-app
+services:
+    dev-jira-react-app:
+      container_name: dev-jira-react-app
       build: 
         context: ./Jira.ReactApp
-        dockerfile: ./jira-react-app.dockerfile
+        dockerfile: ./jira-react-app.dev.dockerfile
       ports:
         - "3000:3000"
+      working_dir: /var/www/jira-react-app
+      env_file:
+        - ./Jira.ReactApp/jira-react-app.env
+      volumes: 
+        - ./Jira.ReactApp:/var/www/jira-react-app
       restart: always
 
-    jira-node-server:
-      container_name: jira-node-server
+    dev-jira-node-server:
+      container_name: dev-jira-node-server
       build: 
         context: ./Jira.NodeServer
-        dockerfile: ./jira-node-server.dockerfile
+        dockerfile: ./jira-node-server.dev.dockerfile
       ports:
         - "3001:3001"
+      working_dir: /var/www/jira-node-server
+      env_file:
+        - ./Jira.NodeServer/jira-node-server.env
+      volumes: 
+        - ./Jira.NodeServer:/var/www/jira-node-server
       restart: always
 
-    jira-dotnetcore-api:
-      container_name: jira-dotnetcore-api
+    dev-jira-dotnetcore-api:
+      container_name: dev-jira-dotnetcore-api
       build: 
         context: ./Jira.Api
-        dockerfile: ./jira-dotnetcore-api.dockerfile
+        dockerfile: ./jira-dotnetcore-api.dev.dockerfile
       ports:
         - "3002:3002"
+      working_dir: /var/www/jira-dotnetcore-api
+      env_file:
+        - ./Jira.Api/jira-dotnetcore-api.env
       restart: always

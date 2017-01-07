@@ -26,10 +26,5 @@
   },
   "tools": {
     "Microsoft.DotNet.Watcher.Tools": "1.1.0-preview4-final"
-  },
-  "publishOptions": {
-    "include": [
-      "config.json"
-    ]
   }
 }

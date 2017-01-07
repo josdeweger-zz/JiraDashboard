@@ -32,6 +32,7 @@ namespace Jira.Api.Bootstrap
             container.Update(builder => builder.RegisterType<RestClientWrapper>().As<IRestClientWrapper>());
 
             container.Update(builder => builder.RegisterType<CustomerStatusProvider>().As<ICustomerStatusProvider>());
+            container.Update(builder => builder.RegisterType<AuthenticationProvider>().As<IAuthenticationProvider>());
         }
 
         public override void Configure(INancyEnvironment environment)

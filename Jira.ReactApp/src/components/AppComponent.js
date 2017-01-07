@@ -4,6 +4,8 @@ import '../css/App.css';
 
 class AppComponent extends Component {
     render() {
+        console.log(this.props.sessionId);
+
         return (
             <div>
                 <MenuComponent />

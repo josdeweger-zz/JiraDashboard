@@ -6,7 +6,7 @@ class DashboardComponent extends Component {
     render() {
         return (
             <Request
-                url={process.env.REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL}
+                url={process.env.REACT_APP_JIRA_NODE_SERVER_URL + '/settings'}
                 method='get'
                 accept='application/json'
                 verbose={true}>

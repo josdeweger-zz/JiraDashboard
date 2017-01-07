@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Jira.Api.Models.Request
 {
-    public class CustomerStatusRequest
+    public class CustomerStatusRequest : AuthorizedRequest
     {
         public int TeamId { get; set; }
         public List<string> ProjectKeys { get; set; }

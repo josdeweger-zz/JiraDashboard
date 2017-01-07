@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.6.1"
+    "abab": "^1.0.3",
+    "react-scripts": "0.8.4"
   },
   "dependencies": {
     "chart.js": "^1.1.1",
@@ -13,6 +14,7 @@
     "path": "^0.12.7",
     "react": "^15.3.2",
     "react-chartjs": "^0.8.0",
+    "react-cookie": "^1.0.4",
     "react-datepicker": "^0.32.0",
     "react-dom": "^15.3.2",
     "react-fetch": "0.0.9",
@@ -22,7 +24,7 @@
     "whatwg-fetch": "^2.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set REACT_APP_TEAM_NAME=ElMango&&set REACT_APP_JIRA_NODE_SERVER_SETTINGS_URL=http://localhost:3001/settings&&set REACT_APP_JIRA_API_URL=http://localhost:3002&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

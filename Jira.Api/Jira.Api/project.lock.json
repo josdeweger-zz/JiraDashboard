@@ -3146,6 +3146,7 @@
         "framework": ".NETCoreApp,Version=v1.1",
         "dependencies": {
           "Jira.Api.Models": "1.0.0",
+          "Nancy": "2.0.0-Pre1820",
           "RestSharp.NetCore": "105.2.4-rc4-24214-01"
         },
         "compile": {
