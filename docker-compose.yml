@@ -7,7 +7,7 @@ services:
         context: ./Jira.ReactApp
         dockerfile: ./jira-react-app.dev.dockerfile
       ports:
-        - "8000:3000"
+        - "3000:3000"
       working_dir: /var/www/jira-react-app
       env_file:
         - ./Jira.ReactApp/jira-react-app.env
@@ -21,7 +21,7 @@ services:
         context: ./Jira.NodeServer
         dockerfile: ./jira-node-server.dev.dockerfile
       ports:
-        - "8001:3001"
+        - "3001:3001"
       working_dir: /var/www/jira-node-server
       env_file:
         - ./Jira.NodeServer/jira-node-server.env
@@ -35,7 +35,7 @@ services:
         context: ./Jira.Api
         dockerfile: ./jira-dotnetcore-api.dev.dockerfile
       ports:
-        - "8002:3002"
+        - "3002:3002"
       working_dir: /var/www/jira-dotnetcore-api
       env_file:
         - ./Jira.Api/jira-dotnetcore-api.env
